@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+.section{
+    background-color: #fab5d2;
+    border: solid black 4px;
+}
+
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navlogo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navimg{
+    width: 20px;
+    height: 20px;
+}
+
+.name{
+    font-family: Helvetica, 'Helvetica Neue', Arial, 'Lucida Grande', sans-serif;
+    font-style: bold;
+    font-weight: 800;
+}
+
+.navimg,
+.cartss,
+.bars,
+.cart,
+.closebtn {
+  width: 2rem;
+}
+
+.navList{
+    display: flex;
+    gap: .5rem;
+}
+
+.cartbtns{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    display: inline-flex;
+    font-size: 1rem;
+}
