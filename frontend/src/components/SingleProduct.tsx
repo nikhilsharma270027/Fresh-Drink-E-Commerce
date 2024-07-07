@@ -9,7 +9,7 @@ interface Product {
   price: string;
 }
 
-const Flavors = () => {
+const SingleProduct = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const navigate = useNavigate();
 
@@ -55,4 +55,4 @@ const Flavors = () => {
   );
 };
 
-export default Flavors;
+export default SingleProduct;

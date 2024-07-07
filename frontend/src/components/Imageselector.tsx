@@ -26,7 +26,7 @@ const Imageselector = () => {
     <>
       <div className="mb-10 md:mb-10 border-2 border-black border-b-2">
         <div className="flex mb-10 md:mb-10">
-          <div className="w-1/2 max-auto">
+          <div className="w-1/2 max-auto sm:pt-20 md:pt-5 lg:pt-0">
             <div className="relative">
               <Carousel className="relative">
                 <CarouselContent className="relative">
