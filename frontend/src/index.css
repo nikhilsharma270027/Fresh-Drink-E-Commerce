@@ -127,6 +127,41 @@
   }
 }
 
+.container {
+  display: flex;
+}
+
+.left-section {
+  width: 40%;
+  position: sticky;
+  top: 0;
+  height: 800px;
+  overflow-y: auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background: #f9f9f9;
+}
+
+.right-section {
+  width: 60%;
+  height: 800px; /* To make sure there's enough content to scroll */
+  padding: 20px;
+  overflow-y: scroll;
+}
+
+.image-container {
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.image-container img {
+  width: 100%;
+  height: calc(50vh - 20px);
+  object-fit: cover;
+}
+
+
 
   
   

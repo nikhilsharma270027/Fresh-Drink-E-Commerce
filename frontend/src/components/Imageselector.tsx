@@ -62,7 +62,7 @@ const Imageselector = () => {
                   1 x 250ml
                 </Button>
                 <button className="rounded-full ml-4 border-2 border-black px-3 py-1">
-                  24 x 250ml
+                  1 x 500ml
                 </button>
               </div>
               <div className="flex w-[100%] border-2 border-black justify-evenly mb-2 ml-2">

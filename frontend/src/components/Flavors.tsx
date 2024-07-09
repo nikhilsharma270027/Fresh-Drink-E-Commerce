@@ -42,8 +42,29 @@ const Flavors = () => {
             key={product._id}
             onClick={() => handleProductClick(product._id)}
           >
-            <img src={product.imageurl} alt={product.name} />
-            <div className="text-xl font-bold text-center">Fresh Kombucha</div>
+            <div className="relative inline-block">
+              <img
+                className="w-full h-full cursor-pointer"
+                src={product.imageurl}
+                alt={product.name}
+              />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6 absolute bottom-1 right-1 m-2"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                />
+              </svg>
+            </div>
+
+            {/* <div className="text-xl font-bold text-center">Fresh Kombucha</div> */}
             <div className="text-xl font-bold text-center px-3">
               {product.name}
             </div>

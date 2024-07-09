@@ -21,8 +21,8 @@ const corsOptions = {
 server.use(express.json());
 
 mongoose.connect(process.env.DB_LOCATION, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+  // useNewUrlParser: true,
+  // useUnifiedTopology: true,
   autoIndex: true
 })
 .then(() => {

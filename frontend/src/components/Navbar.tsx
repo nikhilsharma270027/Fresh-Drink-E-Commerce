@@ -39,14 +39,14 @@ const Navbar = () => {
         </div> */}
 
           <div className="flex justify- items-center gap-[2rem]">
-            <div className="font-bold text-black cursor-pointer" onClick={homepage}>Home</div>
-            <div className="font-bold text-black cursor-pointer" onClick={productpage}>Products</div>
-            <div className="font-bold text-black">Contact</div>
+            <div className="text-xl font-bold text-black cursor-pointer" onClick={homepage}>Home</div>
+            <div className="text-xl font-bold text-black cursor-pointer" onClick={productpage}>Products</div>
+            <div className="text-xl font-bold text-black">Contact</div>
           </div>
 
           <div className="flex justify-center items-center">
             <div className="flex justify-center items-center">
-              <div className="gap-2 font-bold text-black cursor-pointer" onClick={cartpage}>Cart</div>
+              <div className="text-xl gap-2 font-bold text-black cursor-pointer" onClick={cartpage}>Cart</div>
               <img className="w-10" src="/cart.png"></img>
             </div>
           </div>
