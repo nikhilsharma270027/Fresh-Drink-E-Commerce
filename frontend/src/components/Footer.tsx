@@ -5,7 +5,7 @@ import { SocialIcon } from "react-social-icons";
 
 const Footer = () => {
   return (
-    <div className="border-2 border-black">
+    <footer className="border-2 border-black ">
       <div className="flex justify-between broder-2">
         <div className="">
           <div className="pl-6 text-left py-1">Privacy Policy</div>
@@ -48,7 +48,7 @@ const Footer = () => {
             ©2024 - Relativity Demo Store - Powered by Shopify
             </div>
         </div>
-    </div>
+    </footer>
   );
 };
 
