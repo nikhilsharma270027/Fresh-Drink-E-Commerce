@@ -17,7 +17,6 @@ To read more about using these font, please visit the Next.js documentation:
 - App Directory: https://nextjs.org/docs/app/building-your-application/optimizing/fonts
 - Pages Directory: https://nextjs.org/docs/pages/building-your-application/optimizing/fonts
 **/
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "./select"
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "./card"
 import { Separator } from "./separator"
 import { Button } from "./button"
@@ -41,7 +40,7 @@ export function Component() {
   }, [])
   useEffect(()=> {
     calculateAmount();
-  }, [])
+  }, [cart])
 
   const LoadCartFromLocalStorage = () => {
     const savedCart = localStorage.getItem("cart")

@@ -1,28 +1,27 @@
-import { useEffect, useState } from 'react'
 import { Component } from './ui/ui/component';
 
-interface CartItem{
-    _id: string;
-    name: string;
-    size: string;
-    imageurl: string;
-    price: number;
-    quantity: number;
-}
+// interface CartItem{
+//     _id: string;
+//     name: string;
+//     size: string;
+//     imageurl: string;
+//     price: number;
+//     quantity: number;
+// }
 
 const CartStrore = () => {
-  const [cart, setCart] = useState<CartItem[]>([]);
+  // const [cart, setCart] = useState<CartItem[]>([]);
 
-  useEffect(()=> {
-    LoadCartFromLocalStorage();
-  }, [])
+  // useEffect(()=> {
+  //   LoadCartFromLocalStorage();
+  // }, [])
 
-  const LoadCartFromLocalStorage = () => {
-    const savedCart = localStorage.getItem("cart")
-    if(savedCart){
-        setCart(JSON.parse(savedCart));
-    }
-  }  
+  // const LoadCartFromLocalStorage = () => {
+  //   const savedCart = localStorage.getItem("cart")
+  //   if(savedCart){
+  //       setCart(JSON.parse(savedCart));
+  //   }
+  // }  
   return (
     <div>
         <Component />

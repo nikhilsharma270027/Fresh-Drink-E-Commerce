@@ -1,6 +1,3 @@
-// import React from 'react'
-
-import { Instagram, Twitter } from "lucide-react";
 import { SocialIcon } from "react-social-icons";
 
 const Footer = () => {

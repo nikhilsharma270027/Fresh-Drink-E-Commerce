@@ -1,12 +1,12 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Button } from "./ui/ui/button";
 
 const Navbar = () => {
-  const [login, setLogin] = useState(false);
+  // const [login, setLogin] = useState(false);
   const navigate = useNavigate();
-  const [searchBoxVisibility, setSearchBoxVisibility] = useState(false);
+  // const [searchBoxVisibility, setSearchBoxVisibility] = useState(false);
 
   const homepage = () => {
     navigate('/');

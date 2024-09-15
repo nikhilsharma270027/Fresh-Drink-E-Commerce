@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import { Button } from "./ui/ui/button";
 import Loader from "./Loader";
 
@@ -26,7 +25,6 @@ const SingleProduct: React.FC = () => {
   // console.log(sizeClicked)
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
-  const navigate = useNavigate();
 
   useEffect(() => {
     fetchData();
