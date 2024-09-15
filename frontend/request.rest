@@ -1,3 +1,11 @@
+# ### Get all products
+# GET http://localhost:3000/api/products
+# Content-Type: application/json
 ### Get all products
-GET http://localhost:5173/api/products
+POST http://localhost:3000/api/save-user
 Content-Type: application/json
+
+{
+    "name": "nikhl",
+    "email": "nikhil@gmail.com"
+}

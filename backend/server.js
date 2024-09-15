@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import productRoutes from './routes/productRoutes.js';
+import { auth } from 'express-oauth2-jwt-bearer';
 
 dotenv.config();
 const PORT = process.env.PORT || 3000;
@@ -20,6 +21,7 @@ const corsOptions = {
   server.use(cors(corsOptions));
 server.use(express.json());
 
+
 mongoose.connect(process.env.DB_LOCATION, {
   // useNewUrlParser: true,
   // useUnifiedTopology: true,
@@ -33,7 +35,15 @@ mongoose.connect(process.env.DB_LOCATION, {
   process.exit(1);
 });
 
-server.use('/api/products', productRoutes);
+const apple = 'https://dev-e7kwz32ylcdzonq1.us.auth0.com/api/v2/'
+const baseUrl = 'https://fresh-drink-e-commerce.vercel.app';
+const jwtCheck = auth({
+  audience: apple,
+  issuerBaseURL: baseUrl,
+  tokenSigningAlg: 'RS256'
+});
+
+server.use('/api/products', jwtCheck, productRoutes);
 
 
 // User schema
@@ -44,7 +54,7 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model('User', userSchema);
 
 // Endpoint to save user
-app.post('/api/save-user', async (req, res) => {
+server.post('/api/save-user', async (req, res) => {
   const { name, email } = req.body;
 
   // Check if user already exists
@@ -55,6 +65,12 @@ app.post('/api/save-user', async (req, res) => {
   }
 
   res.json({ message: 'User saved', user });
+});
+
+server.use((error, req, res, next) => {
+  const status = error.status || 500;
+  const message = error.message || 500;
+  res.status(status).send(message);
 });
 
 server.listen(PORT, () => {
