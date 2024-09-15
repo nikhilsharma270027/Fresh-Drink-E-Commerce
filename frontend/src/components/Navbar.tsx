@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
+import { Button } from "./ui/ui/button";
 
 const Navbar = () => {
+  const [login, setLogin] = useState(false);
   const navigate = useNavigate();
   const [searchBoxVisibility, setSearchBoxVisibility] = useState(false);
 
@@ -16,6 +19,8 @@ const Navbar = () => {
   const cartpage = () => {
     navigate('/cart');
   }
+
+  const { loginWithRedirect } = useAuth0();
   return (
     <>
       <div className="border-3 border-black">
@@ -44,11 +49,12 @@ const Navbar = () => {
             <div className="text-xl font-bold text-black">Contact</div>
           </div>
 
-          <div className="flex justify-center items-center">
+          <div className="flex justify-between items-center">
             <div className="flex justify-center items-center">
               <div className="text-xl gap-2 font-bold text-black cursor-pointer" onClick={cartpage}>Cart</div>
               <img className="w-10" src="/cart.png"></img>
             </div>
+          <Button variant={"default"} onClick={() => loginWithRedirect()}>Log In</Button>      
           </div>
 
           {/* <div className='flex items-center gap-3 md:gap-6'>
@@ -59,6 +65,7 @@ const Navbar = () => {
                 <i className="text-black bg-white fi fi-rr-search text-xl"></i>
                 </button>
                 </div> */}
+          
         </nav>
       </div>
     </>

@@ -38,10 +38,10 @@ export function Component() {
 
   useEffect(()=> {
     LoadCartFromLocalStorage();
-  }, [cart, total])
+  }, [])
   useEffect(()=> {
     calculateAmount();
-  }, [cart])
+  }, [])
 
   const LoadCartFromLocalStorage = () => {
     const savedCart = localStorage.getItem("cart")
