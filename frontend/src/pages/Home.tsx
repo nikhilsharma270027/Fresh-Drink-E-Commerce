@@ -1,4 +1,3 @@
-import React from "react";
 import Flavors from '../components/Flavors'
 import Footer from '../components/Footer'
 import Imageselector from '../components/Imageselector'
