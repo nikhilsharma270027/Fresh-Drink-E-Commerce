@@ -10,7 +10,7 @@ const server = express();
 
 // CORS configuration
 const corsOptions = {
-    origin: 'https://fresh-drink-e-commerce.vercel.app/', // Replace with your frontend domain
+    origin: 'https://fresh-drink-e-commerce.vercel.app', // Replace with your frontend domain
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, // Allow cookies to be sent with requests
     optionsSuccessStatus: 204
