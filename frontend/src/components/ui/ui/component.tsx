@@ -85,7 +85,7 @@ export function Component() {
             cart.length == 0  ? 
             <>
               <img
-                src='./public/emptycart.png'
+                src='./emptycart.png'
                 alt="Product Image"
                 width={100}
                 height={100}

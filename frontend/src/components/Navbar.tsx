@@ -2,12 +2,14 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Button } from "./ui/ui/button";
+import { useEffect } from "react";
 
 const Navbar = () => {
+  const { loginWithRedirect, isAuthenticated, logout, user } = useAuth0();
   // const [login, setLogin] = useState(false);
   const navigate = useNavigate();
   // const [searchBoxVisibility, setSearchBoxVisibility] = useState(false);
-
+  console.log(user)
   const homepage = () => {
     navigate('/');
   }
@@ -19,15 +21,35 @@ const Navbar = () => {
   const cartpage = () => {
     navigate('/cart');
   }
+  
+  useEffect(() => {
+    if (isAuthenticated && user) {
+      // Send user data to backend
+      fetch('/api/save-user', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name: user.name, email: user.email }),
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('User saved:', data);
+      })
+      .catch((error) => {
+        console.error('Error saving user:', error);
+      });
+    }
+  }, [isAuthenticated, user]);
 
-  const { loginWithRedirect } = useAuth0();
   return (
     <>
       <div className="border-3 border-black">
         <nav className=" z-50 flex justify-around items-center border-3 border-black p-4">
-          <Link to="/" className="flex-none w-10 flex justify-center">
+          <Link to="/" className="flex-none w-10 flex justify-center items-center">
             <img src="/can.png" className="w-210 h-8" />
             <div className="font-bold text-500 text-2xl text-black">fresh</div>
+            <p className="justify-center">Welcome: {user?.name}</p>
           </Link>
 
           {/* <div className={"absolute w-full left-0 top-full mt-0.5 border-b border-grey py-4 px-[5vw] md:border-0 md:block md:relative md:inset-0 md:p-0 md:w-auto md:show " + ( searchBoxVisibility ? "show" : "hide" )}>
@@ -54,7 +76,11 @@ const Navbar = () => {
               <div className="text-xl gap-2 font-bold text-black cursor-pointer" onClick={cartpage}>Cart</div>
               <img className="w-10" src="/cart.png"></img>
             </div>
-          <Button variant={"default"} onClick={() => loginWithRedirect()}>Log In</Button>      
+            {!isAuthenticated ?
+                <Button variant={"default"} onClick={() => logout()}>Log Out</Button>
+              :
+              <Button variant={"default"} onClick={() => loginWithRedirect()}>Log In</Button>      
+            }
           </div>
 
           {/* <div className='flex items-center gap-3 md:gap-6'>

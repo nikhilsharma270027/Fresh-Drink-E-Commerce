@@ -23,7 +23,7 @@ const Productframe = () => {
         <div className="w-1/2">
           <img
             className=" bg-[#68f1d7] aspect-auto overflow-hidden object-cover"
-            src="public/fresh-banner-1.png"
+            src="/fresh-banner-1.png"
             alt="3 fresh drink"
           />
         </div>

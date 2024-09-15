@@ -21,6 +21,7 @@ const Flavors = () => {
     try {
       const response = await axios.get(import.meta.env.VITE_SERVER_DOMAIN + "/api/products");
       setProducts(response.data);
+      console.log(response.data)
     } catch (error) {
       console.error("Error fetching data:", error);
     }

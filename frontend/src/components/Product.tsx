@@ -13,7 +13,7 @@ const ProductDetail: React.FC = () => {
   const fetchProductDetails = async () => {
     try {
       const response = await axios.get(import.meta.env.VITE_SERVER_DOMAIN + `/api/products/${id}`);
-      setProduct(response.data);
+      setProduct(response);
     } catch (error) {
       console.error('Error fetching product details:', error);
     }
