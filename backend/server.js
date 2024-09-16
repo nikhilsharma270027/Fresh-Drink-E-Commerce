@@ -40,6 +40,7 @@ const baseUrl = 'https://fresh-drink-e-commerce.vercel.app';
 const jwtCheck = auth({
   audience: process.env.AUTH0_AUDIENCE,
   issuerBaseURL: process.env.AUTH0_DOMAIN,
+  secret: "GS_8q42KfJJn9ONHijJPB94HWb30r2iJPZqaOQC8cCPKZbPFopdoM0D4DQbtnC3T",
   tokenSigningAlg: 'RS256'
 });
 
