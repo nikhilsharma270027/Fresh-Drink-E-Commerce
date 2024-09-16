@@ -111,7 +111,7 @@ const SingleProduct: React.FC = () => {
   }
   console.log(saveCartToLocalStorage)
 
-  return loading ? (
+  return loading === true ? (
     <Loader />
   ) : (
     <div>

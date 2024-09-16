@@ -12,17 +12,17 @@ const Navbar = () => {
   const productpage = () => navigate('/product');
   const cartpage = () => navigate('/cart');
 
-  useEffect(() => {
-    const getUserMetadata = async () => {
-      try {
-        Protocal();
-      } catch (e) {
-        console.log("error in signup");
-      }
-    };
+  // useEffect(() => {
+  //   const getUserMetadata = async () => {
+  //     try {
+  //       Protocal();
+  //     } catch (e) {
+  //       console.log("error in signup");
+  //     }
+  //   };
 
-    getUserMetadata();
-  }, [getAccessTokenSilently, user?.sub]);
+  //   getUserMetadata();
+  // }, [getAccessTokenSilently, user?.sub]);
 
   // useEffect(() => {
   //   if (isAuthenticated && user) {
@@ -49,33 +49,60 @@ const Navbar = () => {
 
 
 
-  async function Protocal() {
-    try {
-      if (user) {
-        const token = await getAccessTokenSilently({
-          authorizationParams: {
-            audience: "https://dev-e7kwz32ylcdzonq1.us.auth0.com/api/v2/",
-            scope: "openid profile email",
-          },
-        });
+  // async function Protocal() {
+  //   try {
+  //     if (user) {
+  //       const token = await getAccessTokenSilently({
+  //         authorizationParams: {
+  //           audience: "https://dev-e7kwz32ylcdzonq1.us.auth0.com/api/v2/",
+  //           scope: "openid profile email",
+  //         },
+  //       });
   
-        const response = await fetch("/api/save-user", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(user),
-        });
+  //       const response = await fetch("/api/save-user", {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           authorization: `Bearer ${token}`,
+  //         },
+  //         body: JSON.stringify(user),
+  //       });
   
-        const data = await response.json();
-        console.log("User saved:", data);
+  //       const data = await response.json();
+  //       console.log("User saved:", data);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error fetching data:", error);
+  //   }
+  // }
+  useEffect(() => {
+    const fetchTokenAndSaveUser = async () => {
+      try {
+        if (isAuthenticated) {
+          const token = await getAccessTokenSilently({
+            authorizationParams: {
+              audience: "https://dev-e7kwz32ylcdzonq1.us.auth0.com/api/v2/",
+              scope: "openid profile email",
+            },
+          });console.log(token)
+
+
+          await fetch("/api/save-user", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(user),
+          });
+        }
+      } catch (error) {
+        console.error("Error in saving user", error);
       }
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  }
-  
+    };
+
+    if (isAuthenticated && user) fetchTokenAndSaveUser();
+  }, [getAccessTokenSilently, isAuthenticated, user]);
 
 
 

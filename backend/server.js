@@ -54,7 +54,7 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model('User', userSchema);
 
 // Endpoint to save user
-server.post('/api/save-user', async (req, res) => {
+server.post('/api/save-user', jwtCheck ,async (req, res) => {
   const { name, email } = req.body;
 
   // Check if user already exists
