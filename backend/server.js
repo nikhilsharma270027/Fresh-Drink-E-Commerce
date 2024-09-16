@@ -35,6 +35,11 @@ mongoose.connect(process.env.DB_LOCATION, {
   process.exit(1);
 });
 
+server.use(auth({
+  issuerBaseURL: process.env.AUTH0_DOMAIN,
+  audience: process.env.AUTH0_AUDIENCE,
+}));
+
 const apple = 'https://dev-e7kwz32ylcdzonq1.us.auth0.com/api/v2/'
 const baseUrl = 'https://fresh-drink-e-commerce.vercel.app';
 const jwtCheck = auth({
@@ -55,7 +60,7 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model('User', userSchema);
 
 // Endpoint to save user
-server.post('/api/save-user', jwtCheck ,async (req, res) => {
+server.post('/api/save-user', auth() ,async (req, res) => {
   const { name, email } = req.body;
 
   // Check if user already exists
