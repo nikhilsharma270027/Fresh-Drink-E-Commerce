@@ -38,12 +38,12 @@ mongoose.connect(process.env.DB_LOCATION, {
 const apple = 'https://dev-e7kwz32ylcdzonq1.us.auth0.com/api/v2/'
 const baseUrl = 'https://fresh-drink-e-commerce.vercel.app';
 const jwtCheck = auth({
-  audience: apple,
-  issuerBaseURL: baseUrl,
+  audience: process.env.AUTH0_AUDIENCE,
+  issuerBaseURL: process.env.AUTH0_DOMAIN,
   tokenSigningAlg: 'RS256'
 });
 
-server.use('/api/products', jwtCheck, productRoutes);
+server.use('/api/products', productRoutes);
 
 
 // User schema
