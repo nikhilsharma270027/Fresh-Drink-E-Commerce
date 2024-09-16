@@ -11,7 +11,9 @@ ReactDOM.createRoot(document.getElementById('root')!)
     domain="dev-e7kwz32ylcdzonq1.us.auth0.com"
     clientId="TkhIZKK5OF9LdnfHOA7KqNupSofS4WMq"
     authorizationParams={{
-      redirect_uri: window.location.origin
+      redirect_uri: window.location.origin,
+      audience: "https://dev-e7kwz32ylcdzonq1.us.auth0.com/api/v2/",
+      scope: "openid profile email",
     }}
   >
     <App />
