@@ -41,7 +41,7 @@ const jwtCheck = auth({
   audience: process.env.AUTH0_AUDIENCE,
   issuerBaseURL: process.env.AUTH0_DOMAIN,
   secret: "GS_8q42KfJJn9ONHijJPB94HWb30r2iJPZqaOQC8cCPKZbPFopdoM0D4DQbtnC3T",
-  tokenSigningAlg: 'RS256'
+  tokenSigningAlg: 'HS256'
 });
 
 server.use('/api/products', productRoutes);
@@ -55,7 +55,7 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model('User', userSchema);
 
 // Endpoint to save user
-server.post('/api/save-user', async (req, res) => {
+server.post('/api/save-user', jwtCheck ,async (req, res) => {
   const { name, email } = req.body;
 
   // Check if user already exists

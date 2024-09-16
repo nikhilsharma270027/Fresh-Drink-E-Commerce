@@ -96,6 +96,7 @@ const Navbar = () => {
             body: JSON.stringify(user),
           });
         }
+        console.log(user)
       } catch (error) {
         console.error("Error in saving user", error);
       }
