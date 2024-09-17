@@ -12,7 +12,7 @@ ReactDOM.createRoot(document.getElementById('root')!)
     clientId="TkhIZKK5OF9LdnfHOA7KqNupSofS4WMq"
     authorizationParams={{
       redirect_uri: window.location.origin,
-      audience: "https://dev-e7kwz32ylcdzonq1.us.auth0.com/api/v2/",
+      audience: "apple",
       scope: "openid profile email",
     }}
   >

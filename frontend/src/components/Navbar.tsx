@@ -81,7 +81,7 @@ const Navbar = () => {
         if (isAuthenticated && user) {  // Ensure both are available
           const token = await getAccessTokenSilently({
             authorizationParams: {
-              audience: "https://dev-e7kwz32ylcdzonq1.us.auth0.com/api/v2/",
+              audience: "apple",
               scope: "openid profile email",
             },
           });
