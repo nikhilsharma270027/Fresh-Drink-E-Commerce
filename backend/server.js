@@ -40,11 +40,13 @@ mongoose.connect(process.env.DB_LOCATION, {
 //   audience: process.env.AUTH0_AUDIENCE,
 // }));
 const jwtCheck = auth({
-  audience: process.env.AUTH0_AUDIENCE,
-  issuerBaseURL: process.env.AUTH0_DOMAIN,
-  tokenSigningAlg: 'RS256',
+  audience: 'apple',
+  issuerBaseURL: 'https://dev-e7kwz32ylcdzonq1.us.auth0.com/',
+  tokenSigningAlg: 'RS256'
 });
 
+// enforce on all endpoints
+// server.use(jwtCheck);
 
 server.use('/api/products', productRoutes);
 
