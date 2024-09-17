@@ -35,19 +35,16 @@ mongoose.connect(process.env.DB_LOCATION, {
   process.exit(1);
 });
 
-server.use(auth({
-  issuerBaseURL: process.env.AUTH0_DOMAIN,
-  audience: process.env.AUTH0_AUDIENCE,
-}));
-
-const apple = 'https://dev-e7kwz32ylcdzonq1.us.auth0.com/api/v2/'
-const baseUrl = 'https://fresh-drink-e-commerce.vercel.app';
+// server.use(auth({
+//   issuerBaseURL: process.env.AUTH0_DOMAIN,
+//   audience: process.env.AUTH0_AUDIENCE,
+// }));
 const jwtCheck = auth({
   audience: process.env.AUTH0_AUDIENCE,
   issuerBaseURL: process.env.AUTH0_DOMAIN,
-  secret: "GS_8q42KfJJn9ONHijJPB94HWb30r2iJPZqaOQC8cCPKZbPFopdoM0D4DQbtnC3T",
-  tokenSigningAlg: 'HS256'
+  tokenSigningAlg: 'RS256',
 });
+
 
 server.use('/api/products', productRoutes);
 
@@ -60,10 +57,14 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model('User', userSchema);
 
 // Endpoint to save user
-server.post('/api/save-user', auth() ,async (req, res) => {
+server.post('/api/save-user', jwtCheck, async (req, res) => {
   const { name, email } = req.body;
 
-  // Check if user already exists
+  if (!name || !email) {
+    return res.status(400).json({ message: 'Missing required fields: name or email' });
+  }
+  
+
   let user = await User.findOne({ email });
   if (!user) {
     user = new User({ name, email });
@@ -73,11 +74,13 @@ server.post('/api/save-user', auth() ,async (req, res) => {
   res.json({ message: 'User saved', user });
 });
 
+
 server.use((error, req, res, next) => {
   const status = error.status || 500;
-  const message = error.message || 500;
+  const message = error.message || 'Internal Server Error';
   res.status(status).send(message);
 });
+
 
 server.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);

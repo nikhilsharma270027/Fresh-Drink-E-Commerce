@@ -78,16 +78,16 @@ const Navbar = () => {
   useEffect(() => {
     const fetchTokenAndSaveUser = async () => {
       try {
-        if (isAuthenticated) {
+        if (isAuthenticated && user) {  // Ensure both are available
           const token = await getAccessTokenSilently({
             authorizationParams: {
               audience: "https://dev-e7kwz32ylcdzonq1.us.auth0.com/api/v2/",
               scope: "openid profile email",
             },
-          });console.log(token)
-
-
-          await fetch("/api/save-user", {
+          });
+          console.log(token);
+  
+          await fetch(import.meta.env.VITE_SERVER_DOMAIN + "/api/save-user", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -96,15 +96,14 @@ const Navbar = () => {
             body: JSON.stringify(user),
           });
         }
-        console.log(user)
       } catch (error) {
         console.error("Error in saving user", error);
       }
     };
-
+  
     if (isAuthenticated && user) fetchTokenAndSaveUser();
   }, [getAccessTokenSilently, isAuthenticated, user]);
-
+  
 
 
 
