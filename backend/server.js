@@ -77,10 +77,26 @@ server.post('/api/save-user', jwtCheck, async (req, res) => {
 });
 
 
+
+
 server.use((error, req, res, next) => {
   const status = error.status || 500;
   const message = error.message || 'Internal Server Error';
   res.status(status).send(message);
+});
+
+
+import { request } from 'express';
+
+var options = { method: 'POST',
+  url: 'https://dev-e7kwz32ylcdzonq1.us.auth0.com/oauth/token',
+  headers: { 'content-type': 'application/json' },
+  body: '{"client_id":"7NfK5lbkzg0TbGrJCLuv0uumJqnV8tf7","client_secret":"ZOnWGZavosPtlTakpozYkdB3H29M4OeAAVElbDmyqji86FqggHG8-eFGmjLsT4qy","audience":"apple","grant_type":"client_credentials"}' };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
 });
 
 
