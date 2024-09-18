@@ -2,10 +2,14 @@
 # GET http://localhost:3000/api/products
 # Content-Type: application/json
 ### Get all products
-POST http://localhost:3000/api/save-user
-Content-Type: application/json
+# POST http://localhost:3000/api/save-user
+# Content-Type: application/json
 
-{
-    "name": "nikhl",
-    "email": "nikhil@gmail.com"
-}
+# {
+#     "name": "nikhl",
+#     "email": "nikhil@gmail.com"
+# }
+### Request to authorized route
+GET http://localhost:3000/authorized
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InNEeEczN1AxSjNjLUtILU5TNE10SCJ9.eyJpc3MiOiJodHRwczovL2Rldi1lN2t3ejMyeWxjZHpvbnExLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiI3TmZLNWxia3pnMFRiR3JKQ0x1djB1dW1KcW5WOHRmN0BjbGllbnRzIiwiYXVkIjoiYXBwbGUiLCJpYXQiOjE3MjY2ODc4ODIsImV4cCI6MTcyNjc3NDI4MiwiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIiwiYXpwIjoiN05mSzVsYmt6ZzBUYkdySkNMdXYwdXVtSnFuVjh0ZjcifQ.SEf5RdYykd5uJVTcybCQKexjr8FQLtW5iYNKCBAeOQfiO3UknI7Y7tGO4HEgTrPh0Vei7hJbo2tujL01PzhExy6uActaSX_oTHo4Sv_7D5RyW7ECyyzSDL4M8z1uByGPygZjWXhZH92HSJif2V9LEx6GjLA5sTAEk7V8uvlZFbziYO4Ku_Rp84Ue6BsSgAOoLWCLewXrt9o6ZavljqISVOcoNwEyMlVbbu4Udf8sFAa94RhKOMZde7Dvh7v_hUTGaGUIxW2Sxxe6JckB0C8q2QeAUw47IBYEEvteM3hP1sdE1XLY_2jSbav5HBDLHe61Mq6oOszyqA8BSd7JveF9lQ
