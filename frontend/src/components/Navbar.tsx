@@ -87,14 +87,14 @@ const Navbar = () => {
           });
           console.log(token);
   
-          await fetch(import.meta.env.VITE_SERVER_DOMAIN + "/api/save-user", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-            body: JSON.stringify(user),
-          });
+          // await fetch(import.meta.env.VITE_SERVER_DOMAIN + "/api/save-user", {
+          //   method: "POST",
+          //   headers: {
+          //     "Content-Type": "application/json",
+          //     Authorization: `Bearer ${token}`,
+          //   },
+          //   body: JSON.stringify(user),
+          // });
         }
       } catch (error) {
         console.error("Error in saving user", error);
