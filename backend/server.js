@@ -44,7 +44,7 @@ mongoose.connect(process.env.DB_LOCATION, {
 // Middleware to protect routes with JWT
 const checkJwt = jwt({
   // Dynamically provide a signing key based on the kid in the header and the signing keys provided by JWKS
-  secret: jwksRsa.expressJwtSecret({
+  secret: jwks.expressJwtSecret({
     cache: true,
     rateLimit: true,
     jwksRequestsPerMinute: 5,
