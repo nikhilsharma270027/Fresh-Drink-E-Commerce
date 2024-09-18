@@ -41,15 +41,23 @@ mongoose.connect(process.env.DB_LOCATION, {
 //   issuerBaseURL: process.env.AUTH0_DOMAIN,
 //   audience: process.env.AUTH0_AUDIENCE,
 // }));
-const jwtCheck = auth({
-  audience: 'apple',
-  issuerBaseURL: 'https://dev-e7kwz32ylcdzonq1.us.auth0.com/',
-  tokenSigningAlg: 'RS256'
+// Middleware to protect routes with JWT
+const checkJwt = jwt({
+  // Dynamically provide a signing key based on the kid in the header and the signing keys provided by JWKS
+  secret: jwksRsa.expressJwtSecret({
+    cache: true,
+    rateLimit: true,
+    jwksRequestsPerMinute: 5,
+    jwksUri: `"https://dev-e7kwz32ylcdzonq1.us.auth0.com/.well-known/jwks.json`,
+  }),
+  // Validate the audience and the issuer
+  audience: "apple",
+  issuer: 'https://dev-e7kwz32ylcdzonq1.us.auth0.com/',
+  algorithms: ['RS256'],
 });
-
 // enforce on all endpoints
 // server.use(jwtCheck);
-
+server.use(checkJwt)
 server.use('/api/products', productRoutes);
 
 
@@ -61,22 +69,22 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model('User', userSchema);
 
 // Endpoint to save user
-// server.post('/api/save-user', jwtCheck, async (req, res) => {
-//   const { name, email } = req.body;
+server.post('/api/save-user', jwtCheck, async (req, res) => {
+  const { name, email } = req.body;
 
-//   if (!name || !email) {
-//     return res.status(400).json({ message: 'Missing required fields: name or email' });
-//   }
+  if (!name || !email) {
+    return res.status(400).json({ message: 'Missing required fields: name or email' });
+  }
   
 
-//   let user = await User.findOne({ email });
-//   if (!user) {
-//     user = new User({ name, email });
-//     await user.save();
-//   }
+  let user = await User.findOne({ email });
+  if (!user) {
+    user = new User({ name, email });
+    await user.save();
+  }
 
-//   res.json({ message: 'User saved', user });
-// });
+  res.json({ message: 'User saved', user });
+});
 
 
 server.use((error, req, res, next) => {
