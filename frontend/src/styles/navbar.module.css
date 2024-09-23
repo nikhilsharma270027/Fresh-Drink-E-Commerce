@@ -48,3 +48,40 @@
     display: inline-flex;
     font-size: 1rem;
 }
+
+.cartBox{
+    width: 6rem;
+  height: 3rem;
+  
+  /* font-family: "MonumentExtended-Ultrabold"; */
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: #faff00;
+  border: 3px solid #000000;
+  box-shadow: 6px 7px 0px #000000;
+  border-radius: 12px;
+  color: black;
+  
+}
+/* bg-black text-white font-bold flex-none text-left py-2 px-2  */
+.shopBox{
+    width: 6rem;
+  height: 3rem;
+  
+  /* font-family: "MonumentExtended-Ultrabold"; */
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* text-align: end; */
+  margin: auto;
+  background: #faff00;
+  border: 3px solid #000000;
+  box-shadow: 6px 7px 0px #000000;
+  border-radius: 12px;
+  color: black;
+  
+}

@@ -1,33 +1,33 @@
 // import React from 'react'
-
+import Styles from '../styles/navbar.module.css'
+import Strap from './Strap';
 const Productframe = () => {
   return (
     <>
-      <div className="h-8 border-2  border-black">
-        <div className="text-black h-7  bg-yellow-300 border-black text-center">
-          Organic & Vegan Friendly Kombucha
-        </div>
-      </div>
+      <Strap />
 
-      <div className="h-[35rem] flex items-center justify-between border-2 border-black overflow-hidden">
-        <div className="w-1/2">
-          <h1 className="font-bold text-balance px-12 text-center">
+      <div className="h-[35rem] flex flex-col-reverse lg:flex-row items-center justify-between border-2 border-black overflow-hidden bg-[#68f0d7]">
+        <div className="w-full lg:w-1/2 text-center mx-5 my-5">
+          <h1 className="font-bold text-balance px-12">
             Fresh, fun & full of flavour
           </h1>
-          <i className="text-3xl text-left">kombucha with a twist !</i>
-          <br></br>
-          <button className="bg-black text-white font-bold flex-none text-left py-2 px-2 ">
+          <i className="text-3xl">kombucha with a twist !</i>
+          <br />
+          <div className={Styles.shopBox}>
             Shop
-          </button>
+          </div>
         </div>
-        <div className="w-1/2">
+
+        <div className="w-full lg:w-1/2">
           <img
-            className=" bg-[#68f1d7] aspect-auto overflow-hidden object-cover"
+            className="bg-[#68f1d7] aspect-auto overflow-hidden object-cover"
             src="/fresh-banner-1.png"
             alt="3 fresh drink"
           />
         </div>
       </div>
+
+
 
       <div className="marquee h-20 text-black bg-[#bd5aeb] border-b-black border-b-2">
         <div className="marquee-content m-4 text-5xl font-extrabold">
