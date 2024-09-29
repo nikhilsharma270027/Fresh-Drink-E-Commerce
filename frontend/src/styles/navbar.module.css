@@ -64,7 +64,7 @@
   box-shadow: 6px 7px 0px #000000;
   border-radius: 12px;
   color: black;
-  
+  padding: 0px 1.5rem;
 }
 /* bg-black text-white font-bold flex-none text-left py-2 px-2  */
 .shopBox{

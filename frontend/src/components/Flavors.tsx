@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
 interface Product {
   _id: string;
   name: string;
@@ -10,22 +10,33 @@ interface Product {
 }
 
 const Flavors = () => {
-  const [products, setProducts] = useState<Product[]>([]);
+  // const [products, setProducts] = useState<Product[]>([]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get(import.meta.env.VITE_SERVER_DOMAIN + "/api/products");
-      setProducts(response.data);
-      console.log(response.data)
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
+  // const fetchData = async () => {
+  //   try {
+  //     const response = await axios.get(import.meta.env.VITE_SERVER_DOMAIN + "/api/products");
+  //     setProducts(response.data);
+  //     console.log(response.data)
+  //   } catch (error) {
+  //     console.error("Error fetching data:", error);
+  //   }
+  // };
+
+  const { data: products = [] } = useQuery({
+    queryKey: ["products"],
+    queryFn: async () => {
+      const { data } = await axios.get(import.meta.env.VITE_SERVER_DOMAIN + "/api/products");
+      console.log(data)
+    return data;  // this should return the actual data, not the whole response object;
+    },
+    placeholderData: keepPreviousData,
+    staleTime: 20000,
+  });
 
   const handleProductClick = (productId: string) => {
     navigate(`/product/${productId}`);
@@ -36,8 +47,8 @@ const Flavors = () => {
       <h1 className="text-3xl text-black text-left p-4 py-8 font-extrabold">
         Our flavors
       </h1>
-      <div className="flex justify-center">
-        {products.map((product) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 p-4">
+        {products.map((product: Product) => (
           <div
             className="mb-10"
             key={product._id}
@@ -45,7 +56,7 @@ const Flavors = () => {
           >
             <div className="relative inline-block">
               <img
-                className="w-full h-full cursor-pointer"
+                className="w-[20rem] lg:w-full lg:h-full cursor-pointer "
                 src={product.imageurl}
                 alt={product.name}
               />

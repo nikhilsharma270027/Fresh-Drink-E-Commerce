@@ -8,9 +8,11 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "./ui/ui/carousel";
+import { useNavigate } from "react-router-dom";
 
 const Imageselector = () => {
   let [count, setCount] = useState(1);
+  const navigate = useNavigate();
 
   const inc = () => {
     if (count < 10) {
@@ -25,8 +27,9 @@ const Imageselector = () => {
   return (
     <>
       <div className="mb-10 md:mb-10 border-2 border-black border-b-2">
-        <div className="flex mb-10 md:mb-10">
-          <div className="w-1/2 max-auto sm:pt-20 md:pt-5 lg:pt-0">
+        <div className="flex flex-wrap mb-10 md:mb-10">
+
+          <div className="md:w-1/2 max-auto sm:pt-20 md:pt-5 lg:pt-0">
             <div className="relative">
               <Carousel className="relative">
                 <CarouselContent className="relative">
@@ -47,7 +50,7 @@ const Imageselector = () => {
             </div>
           </div>
 
-          <div className="w-1/2">
+          <div className="md:w-1/2">
             <div className="m-10 mt-6 md:m-1 md:mt-1">
               <div className="ml-2 py-10 text-left font-extrabold text-5xl md:3xl">
                 Fresh Kombucha Orange
@@ -61,9 +64,9 @@ const Imageselector = () => {
                 <Button className="rounded-full ml-4 px-3 py-2">
                   1 x 250ml
                 </Button>
-                <button className="rounded-full ml-4 border-2 border-black px-3 py-1">
+                <Button className="rounded-full ml-4 border-2 border-black px-3 py-1">
                   1 x 500ml
-                </button>
+                </Button>
               </div>
               <div className="flex w-[100%] border-2 border-black justify-evenly mb-2 ml-2">
                 <button onClick={dec} disabled={count === 1}>
@@ -74,7 +77,7 @@ const Imageselector = () => {
                   +
                 </button>
               </div>
-              <Button className="w-[100%] ml-2">Add to cart</Button>
+              <Button onClick={()=> navigate('/cart')} className="w-[100%] ml-2">Add to cart</Button>
             </div>
           </div>
         </div>

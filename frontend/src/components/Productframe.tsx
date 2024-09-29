@@ -8,7 +8,7 @@ const Productframe = () => {
 
       <div className="h-[35rem] flex flex-col-reverse lg:flex-row items-center justify-between border-2 border-black overflow-hidden bg-[#68f0d7]">
         <div className="w-full lg:w-1/2 text-center mx-5 my-5">
-          <h1 className="font-bold text-balance px-12">
+          <h1 className="font-bold text-balance px-12 ">
             Fresh, fun & full of flavour
           </h1>
           <i className="text-3xl">kombucha with a twist !</i>
@@ -18,9 +18,9 @@ const Productframe = () => {
           </div>
         </div>
 
-        <div className="w-full lg:w-1/2">
+        <div className="w-full lg:w-1/2 flex justify-center">
           <img
-            className="bg-[#68f1d7] aspect-auto overflow-hidden object-cover"
+            className="bg-[#68f1d7] max-w-md  md:aspect-auto overflow-hidden object-cover"
             src="/fresh-banner-1.png"
             alt="3 fresh drink"
           />

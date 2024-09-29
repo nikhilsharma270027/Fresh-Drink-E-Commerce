@@ -76,6 +76,15 @@
     }
   }
 
+  @font-face {
+    font-family: 'MonumentExtended-Ultrabold';
+    src: url('/frontend/public/fonts/MonumentExtended-Ultrabold.otf') format('woff2'), 
+         url('/frontend/public/fonts/MonumentExtended-Ultrabold.otf') format('woff');
+    font-weight: bold;
+    font-style: normal;
+  }
+  
+
   @keyframes marquee {
     0% { transform: translateX(0%); }
     100% { transform: translateX(-100%); }

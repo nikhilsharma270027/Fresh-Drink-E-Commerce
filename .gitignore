@@ -24,3 +24,4 @@ logs/
 # Ignore IDE/editor files
 .vscode/
 .idea/
+requirement.txt

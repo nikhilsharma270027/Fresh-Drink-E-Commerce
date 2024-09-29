@@ -23,7 +23,7 @@ const CartStrore = () => {
   //   }
   // }  
   return (
-    <div>
+    <div className='bg-[#23e299]'>
         <Component />
       {/* {
         cart.map((item) => (
