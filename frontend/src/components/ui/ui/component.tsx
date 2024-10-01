@@ -26,6 +26,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../../common/firebase";
 import Styles from '../../../styles/navbar.module.css'
+import { totalmem } from "os";
 interface CartItem {
   _id: string;
   name: string;
@@ -118,7 +119,7 @@ export function Component() {
   
   const handleInputChange = (event: any) => {
     let inputValue = event.target.value;
-    inputValue = inputValue.replace(/\D/g, "");
+    inputValue = inputValue.replace(/\D/g, " ");
     inputValue = inputValue.slice(0, 10);
     setPhone(inputValue);
   };
@@ -133,12 +134,12 @@ export function Component() {
       return;
     }
     if (authUser) {
-      // const totalAmount: any =  calculateAmount();
-      const totalAmount: number = 1000;
+      const totalAmount: any = total;
+      // const totalAmount: number = 1000;
       const { data } = await axios.post(
         import.meta.env.VITE_SERVER_DOMAIN + "/api/create-order",
         {
-          totalAmount: 1000,
+          totalAmount,
         }
       );
       console.log(data);
@@ -146,7 +147,7 @@ export function Component() {
         var options = {
           // key: import.meta.env.KeyId,
           key: "rzp_test_mKcblhg2lNR0Cs",
-          amount: 1000 * 100, // Convert to paisa (smallest unit)
+          amount: totalAmount * 100, // Convert to paisa (smallest unit)
           currency: "INR",
           name: "Fresh Drink",
           description: "My Chip Payment",
@@ -257,7 +258,7 @@ export function Component() {
                   <div className="grid gap-1">
                     <h3 className="font-medium">{item.name}</h3>
                     <p className="text-gray-500 dark:text-gray-400 text-sm">
-                      {item.size}
+                      {item.size} x {item.quantity}
                     </p>
                   </div>
                   <div className="flex items-center justify-end gap-2">

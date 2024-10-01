@@ -58,7 +58,7 @@ const MobileNavbar = ({open, setOpen}: any) => {
 
   return (
     <div
-      className={`md:block absolute border-2 border-black  bg-[#bd5aeb] -left-14 right-0 -top-11 border-grey  w-screen hi rounded-lg translate ease-in-out delay-100 mb-6`}
+      className={`md:block absolute border-2 border-black  bg-[#bd5aeb] -left-48 md:-left-72 md:-ml-32   -top-10 border-grey  w-screen hi rounded-lg  mb-6 ${open ? Styles.navbarSlide : " "}`}
     >
       <div className={"flex justify-items-center flex-col"}>
         <Button className={Styles.navclose } onBlur={handleBlur} onClick={() => setOpen(!open)}>

@@ -54,6 +54,13 @@ const Navbar = () => {
   //   // }
   // }
 
+  const handleSearch = (e: any) => {
+    let query = e.target.value;
+    if (e.keyCode == 13 && query && query.length) {
+      navigate(`/search/${query}`);
+    }
+  };
+
   const handleLogOut = () => {
     const auth = getAuth();
     auth
@@ -71,7 +78,7 @@ const Navbar = () => {
   return (
     <div className="border-3 border-black">
       <nav className="z-50 flex justify-between items-center border-3 border-black p-4">
-        <div className="justify-center ml-10">
+        <div className="flex justify-center items-center gap-x-10 ml-10 mr-10">
           <Link
             to="/"
             className="flex-none w-10 flex justify-center items-center"
@@ -81,6 +88,16 @@ const Navbar = () => {
               fresh
             </div>
           </Link>
+        <div className="hidden sm:hidden md:block lg:block xl:block ">
+          <div >
+            <input
+              type="text"
+              placeholder="Search fresh-drink"
+              className="h-10 rounded-lg p-2"
+              onKeyDown={handleSearch}
+            />
+          </div>
+        </div>
         </div>
 
         <div className={` hidden sm:hidden md:hidden lg:block xl:block`}>
@@ -124,11 +141,11 @@ const Navbar = () => {
           } */}
           </div>
         </div>
-        <div className="relative lg:hiiden md:hidden xl:hidden w-full h-full">
+        <div className="relative lg:hidden md:blcok xl:hidden w-full h-full ml-12 ">
           {open == true ? <MobileNavbar setOpen={setOpen} open={open} /> : " "}
         </div>
 
-        <div className="flex justify-center mr-10">
+        <div className="flex justify-center mr-4">
           <div className={Styles.cartBox} onClick={cartpage}>
             <div className="text-xl gap-2 font-bold text-black cursor-pointer">
               Cart

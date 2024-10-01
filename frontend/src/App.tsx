@@ -9,6 +9,7 @@ import Cart from './pages/Cart';
 import Login from './components/auth/login/login';
 import Register from './components/auth/register/register';
 import PreviousOrder from './pages/PreviousOrder';
+import SearchPage from './components/SearchPage';
 // import Productframe from './components/Productframe';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path='/product/:id' element={<ProductPage />} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/carthistory' element={<PreviousOrder />} />
+        <Route path='/search/:query' element={<SearchPage />} />
       </Routes>
     </Router>
   );

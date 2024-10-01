@@ -1,7 +1,9 @@
 // import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import Styles from '../styles/navbar.module.css'
 import Strap from './Strap';
 const Productframe = () => {
+  const navigate = useNavigate();
   return (
     <>
       <Strap />
@@ -13,7 +15,7 @@ const Productframe = () => {
           </h1>
           <i className="text-3xl">kombucha with a twist !</i>
           <br />
-          <div className={Styles.shopBox}>
+          <div className={Styles.shopBox} onClick={()=> navigate('/product')}>
             Shop
           </div>
         </div>
@@ -45,7 +47,7 @@ const Productframe = () => {
             className="w-full h-full object-cover"
             alt="Perfect Pineapple"
           />
-          <span className="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-center bg-opacity-50  text-black font-extrabold p-1 text-2xl">
+          <span className="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-center bg-opacity-50  text-black font-extrabold p-1 text-md sm:text-md md:text-xl lg:text-2xl">
             Perfect
             <br />
             Pineapple
@@ -58,7 +60,7 @@ const Productframe = () => {
             className="w-full h-full object-cover"
             alt="Ginger Drink"
           />
-          <span className="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-center bg-opacity-50 text-black font-extrabold p-1 text-2xl">
+          <span className="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-center bg-opacity-50 text-black font-extrabold p-1 text-md sm:text-md md:text-xl lg:text-2xl">
             Ginger
             <br />
             Drink
@@ -71,7 +73,7 @@ const Productframe = () => {
             className="w-full h-full object-cover"
             alt="Orange Drink"
           />
-          <span className="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-center bg-opacity-50 text-black font-extrabold p-1 text-2xl">
+          <span className="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-center bg-opacity-50 text-black font-extrabold p-1 text-md sm:text-md md:text-xl lg:text-2xl">
             Orange
             <br />
             Drink
@@ -84,7 +86,7 @@ const Productframe = () => {
             className="w-full h-full object-cover"
             alt="Raspberry Drink"
           />
-          <span className="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-center bg-opacity-50 text-black font-extrabold p-1 text-2xl">
+          <span className="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-center bg-opacity-50 text-black font-extrabold p-1 text-md sm:text-md md:text-xl lg:text-2xl">
             Raspberry
             <br />
             Drink

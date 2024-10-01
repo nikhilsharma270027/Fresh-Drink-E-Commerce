@@ -21,7 +21,7 @@ const instance = new Razorpay({
 // Create Order API
 router.post("/create-order", async (req, res) => {
   const { totalAmount } = req.body;
-  
+  console.log("Received totalAmount:", totalAmount);
   if (!totalAmount) {
     return res.status(400).json({ error: "Total amount is required." });
   }

@@ -128,7 +128,24 @@ server.post('/api/home', async(req, res) => {
   } catch (error) {
     res.status(500).json({ error: "Failed to retrieve product data" });
   }
-}) 
+});
+
+// Search products route
+server.post('/search-candata', async (req, res) => {
+  const { query } = req.body;
+  
+  try {
+    // Use a case-insensitive regex query to match product names
+    const products = await Product.find({
+      name: { $regex: query, $options: 'i' } // 'i' makes it case-insensitive
+    });
+
+    res.status(200).json({ can: products });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error while searching products" });
+  }
+});
 
 
 // // Endpoint to save user

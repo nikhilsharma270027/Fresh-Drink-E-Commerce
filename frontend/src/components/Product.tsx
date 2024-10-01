@@ -16,10 +16,17 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "./ui/ui/carousel";
+import Loader from "./Loader";
 
+interface Product {
+  _id: string;
+  name: string;
+  imageurl: string;
+  price: number;
+}
 const ProductDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const [product, setProduct] = useState<any>(null);
+  const [product, setProduct] = useState<Product | null>(null);
   let [count, setCount] = useState(1);
   const navigate = useNavigate();
 
@@ -43,25 +50,25 @@ const ProductDetail: React.FC = () => {
       const response = await axios.get(
         import.meta.env.VITE_SERVER_DOMAIN + `/api/products/${id}`
       );
-      setProduct(response);
+      setProduct(response.data);
+      console.log("thsi was it",response.data)
     } catch (error) {
       console.error("Error fetching product details:", error);
     }
   };
 
   if (!product) {
-    return <div>Loading...</div>;
+    return <Loader />; 
   }
-
   return (
     <>
-      <div className="flex flex-wrap-reverse">
+      <div className="flex bg-[#68f1d7] flex-wrap-reverse md:flex-nowrap">
         <div className="md:w-1/2 m-4">
           <div className="text-left pl-4 text-4xl font-extrabold text-pretty ">
-            Fresh Focused Mixed Flavours
+            {product.name}
           </div>
           <div className="text-left pl-4 mt-2">
-            Rs. 700 <del>Rs. 950</del>
+            Rs. {product.price} <del>Rs. 950</del>
           </div>
           <li className="text-left pl-4 mt-2">100 in stock</li>
           <div className="w-full pl-4 border-2 border-black bg-white p-2 mt-2">
@@ -164,9 +171,9 @@ const ProductDetail: React.FC = () => {
         </div>
 
         <div className="md:w-1/2">
-          <div className="hidden">
+          <div className="hidden sm:hidden md:block lg:block">
 
-          <img src="/orange.png" alt="" className="" />
+          <img src={product.imageurl} alt="" className="" />
           <img src="/orangeslide.png" alt="" className="" />
           </div>
         <div className="sm:hidden block relative">
@@ -175,12 +182,12 @@ const ProductDetail: React.FC = () => {
               <CarouselItem className="relative">
                 <img
                   className="h-30 w-30 object-fill overflow-hidden"
-                  src="orange.png"
+                  src={product.imageurl}
                   alt=""
                 />
               </CarouselItem>
               <CarouselItem>
-                <img src="orangeslide.png" alt="" />
+                <img src={product.imageurl} alt="" />
               </CarouselItem>
             </CarouselContent>
             <CarouselPrevious className="absolute top-1/2 left-4 transform -translate-y-1/2 z-10" />

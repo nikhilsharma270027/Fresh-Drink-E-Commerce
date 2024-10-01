@@ -26,22 +26,22 @@ const Imageselector = () => {
   };
   return (
     <>
-      <div className="mb-10 md:mb-10 border-2 border-black border-b-2">
+      <div className="mb-0.3 bg-[#a06fff] md:mb-0.3 border-2 border-black border-b-2">
         <div className="flex flex-wrap mb-10 md:mb-10">
 
           <div className="md:w-1/2 max-auto sm:pt-20 md:pt-5 lg:pt-0">
             <div className="relative">
-              <Carousel className="relative">
+              <Carousel className="relative m-5">
                 <CarouselContent className="relative">
                   <CarouselItem className="relative">
                     <img
-                      className="h-30 w-30 object-fill overflow-hidden"
+                      className="h-30 w-30 object-fill overflow-hidden rounded-full"
                       src="orange.png"
                       alt=""
                     />
                   </CarouselItem>
                   <CarouselItem>
-                    <img src="orangeslide.png" alt="" />
+                    <img src="orangeslide.png" alt="" className="rounded-full"/>
                   </CarouselItem>
                 </CarouselContent>
                 <CarouselPrevious className="absolute top-1/2 left-4 transform -translate-y-1/2 z-10" />
@@ -82,7 +82,7 @@ const Imageselector = () => {
           </div>
         </div>
 
-        <div className="mt-8  border-1 border-black border-t-2">
+        <div className="mt-8 bg-[#CDC1FF]  border-1 border-black border-t-2">
           <div className="px-4 py-16 text-5xl font-extrabold text-left">We started fresh in our kitchen and
           loved every moment!</div>
         </div>
