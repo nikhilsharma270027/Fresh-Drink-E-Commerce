@@ -28,9 +28,9 @@ const Navbar = () => {
             email: user.email,
           })
         );
-        const sessionUser = sessionStorage.getItem("user");
-        const sessionU = sessionUser ? JSON.parse(sessionUser) : null;
-        console.log(sessionU);
+        // const sessionUser = sessionStorage.getItem("user");
+        // const sessionU = sessionUser ? JSON.parse(sessionUser) : null;
+        // console.log(sessionU);
         // console.log(user.displayName)
         // fetchuserForSession(user)
       } else setUserName("");

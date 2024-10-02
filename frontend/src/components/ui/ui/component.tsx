@@ -57,13 +57,13 @@ export function Component() {
           email: user.email || "", // Set email
           uid: user.uid, // Set uid
         });
-        console.log(user);
+        // console.log(user);
       }
     });
 
     LoadCartFromSessionStorage();
     ch();
-  }, [products]);
+  }, []);
   useEffect(() => {
     calculateAmount();
   }, [cart]);
@@ -145,7 +145,7 @@ export function Component() {
       try {
         var options = {
           // key: import.meta.env.KeyId,
-          key: "rzp_test_mKcblhg2lNR0Cs",
+          key: import.meta.env.VITE_KeyId,
           amount: totalAmount * 100, // Convert to paisa (smallest unit)
           currency: "INR",
           name: "Fresh Drink",
