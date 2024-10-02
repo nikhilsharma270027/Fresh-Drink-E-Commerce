@@ -66,7 +66,7 @@ export function Component() {
   }, []);
   useEffect(() => {
     calculateAmount();
-  }, [cart]);
+  }, [cart, products]);
   useEffect(() => {
     // const fetchSession = async () => {
     //   try {
@@ -89,7 +89,7 @@ export function Component() {
         })
         .then((res) => {
           setProducts(res.data);
-          console.log(res.data);
+          // console.log(res.data);
         });
     }
   };

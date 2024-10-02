@@ -18,7 +18,7 @@ const Flavors = () => {
       const { data } = await axios.get(
         import.meta.env.VITE_SERVER_DOMAIN + "/api/products"
       );
-      console.log(data);
+      // console.log(data);
       return data; // this should return the actual data, not the whole response object;
     },
     placeholderData: keepPreviousData,
