@@ -9,7 +9,6 @@ const ProductPage = () => {
   return (
     <div>
         <Navbar />
-        {/* <BreadcrumbWithCustomSeparator /> */}
         <Strap />
         <Product />
         <Footer />
