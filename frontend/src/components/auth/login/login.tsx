@@ -1,16 +1,20 @@
 import { useState } from 'react'
 import {  Link, useNavigate } from 'react-router-dom'
-import { doSignInWithGoogle } from '../../../common/authfirebase';
+// import { doSignInWithGoogle } from '../../../common/authfirebase';
 import { auth } from '../../../common/firebase';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 
+interface valueProps{
+    email: string;
+    pass: string;
+}
 const Login = () => {
     // const { userLoggedIn }: any = useAuth()
     const navigate = useNavigate();
 
     const [isSigningIn, setIsSigningIn] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
-    const [ values, setValues ] = useState({
+    const [ values, setValues ] = useState<valueProps>({
         email: "",
         pass: ""
       })
@@ -26,6 +30,7 @@ const Login = () => {
         // setSubmitButtonDisabled(true);
         signInWithEmailAndPassword(auth, values.email, values.pass)
         .then((res) => {
+            setValues({ email: res.user.email || "" , pass: res.user.displayName || ""});
             console.log("Login successful:", res.user);
             navigate("/"); // Navigate to home after successful login
             setIsSigningIn(false); // Reset signing in state
@@ -37,13 +42,22 @@ const Login = () => {
         });
       }
 
-    const onGoogleSignIn = (e: any) => {
+      const onGoogleSignIn = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
-        if (!isSigningIn) {
-            setIsSigningIn(true)
-            doSignInWithGoogle().catch(err => {
-                setIsSigningIn(false)
-            })
+        setIsSigningIn(true) // Start the signing-in process
+
+        try {
+            const provider = new GoogleAuthProvider()
+            const result = await signInWithPopup(auth, provider)
+            const user = result.user
+            setValues({ email: user.email || "", pass: "" }) // clear the password field
+            console.log("Google sign-in successful:", user)
+            navigate("/") // Navigate to home after successful login
+        } catch (err: any) {
+            console.log("Error:", err.message)
+            setErrorMessage(err.message) // Display error message
+        } finally {
+            setIsSigningIn(false) // Always reset signing in state
         }
     }
 

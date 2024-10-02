@@ -18,7 +18,7 @@ const CartHistory = () => {
       setEmail(sessionU.email);
       fetchOrders(sessionU.email); // Pass email to fetchOrders
     }
-  }, []);
+  }, [email]);
 
   const fetchOrders = async (userEmail: any) => {
     try {

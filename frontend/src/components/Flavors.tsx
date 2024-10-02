@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { keepPreviousData, useQuery } from '@tanstack/react-query';
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 interface Product {
   _id: string;
   name: string;
@@ -13,26 +12,14 @@ const Flavors = () => {
   // const [products, setProducts] = useState<Product[]>([]);
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
-
-  // const fetchData = async () => {
-  //   try {
-  //     const response = await axios.get(import.meta.env.VITE_SERVER_DOMAIN + "/api/products");
-  //     setProducts(response.data);
-  //     console.log(response.data)
-  //   } catch (error) {
-  //     console.error("Error fetching data:", error);
-  //   }
-  // };
-
   const { data: products = [] } = useQuery({
     queryKey: ["products"],
     queryFn: async () => {
-      const { data } = await axios.get(import.meta.env.VITE_SERVER_DOMAIN + "/api/products");
-      console.log(data)
-    return data;  // this should return the actual data, not the whole response object;
+      const { data } = await axios.get(
+        import.meta.env.VITE_SERVER_DOMAIN + "/api/products"
+      );
+      console.log(data);
+      return data; // this should return the actual data, not the whole response object;
     },
     placeholderData: keepPreviousData,
     staleTime: 20000,

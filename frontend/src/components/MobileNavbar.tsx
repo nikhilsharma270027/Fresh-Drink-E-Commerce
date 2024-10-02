@@ -1,5 +1,5 @@
 import { getAuth } from "firebase/auth";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../common/firebase";
 import Styles from '../styles/navbar.module.css'
@@ -11,8 +11,6 @@ const MobileNavbar = ({open, setOpen}: any) => {
   // Navigate functions
   const homepage = () => navigate("/");
   const productpage = () => navigate("/product");
-  const cartpage = () => navigate("/cart");
-  // const [open, setOpen] = useState(false);
   const handleLogin = () => navigate("/register");
   const [userName, setUserName] = useState("");
   useEffect(() => {
@@ -27,8 +25,8 @@ const MobileNavbar = ({open, setOpen}: any) => {
             email: user.email,
           })
         );
-        const sessionUser = sessionStorage.getItem("user");
-        const sessionU = sessionUser ? JSON.parse(sessionUser) : null;
+        // const sessionUser = sessionStorage.getItem("user");
+        // const sessionU = sessionUser ? JSON.parse(sessionUser) : null;
         // console.log(sessionU);
         // console.log(user.displayName)
         // fetchuserForSession(user)

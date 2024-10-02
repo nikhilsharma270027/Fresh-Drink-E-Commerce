@@ -1,4 +1,3 @@
-import React from 'react'
 import Navbar from '../components/Navbar'
 import Strap from '../components/Strap'
 import CartHistory from '../components/CartHistory'

@@ -14,7 +14,7 @@ import {
 } from "./ui/ui/carousel";
 
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "./ui/ui/button";
 import Loader from "./Loader";

@@ -26,7 +26,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../../common/firebase";
 import Styles from '../../../styles/navbar.module.css'
-import { totalmem } from "os";
 interface CartItem {
   _id: string;
   name: string;
@@ -42,7 +41,7 @@ export function Component() {
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [errorM, setErrorM] = useState(false);
-  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState(null);
   const [products, setProducts] = useState([]);
   const [authUser, setAuthUser] = useState({
     userName: "",
@@ -64,7 +63,7 @@ export function Component() {
 
     LoadCartFromSessionStorage();
     ch();
-  }, []);
+  }, [products]);
   useEffect(() => {
     calculateAmount();
   }, [cart]);

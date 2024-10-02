@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import Styles from "../styles/navbar.module.css";
 import { auth } from "../common/firebase";
 import { getAuth } from "firebase/auth";
-import axios from "axios";
 import MobileNavbar from "./MobileNavbar";
 
 const Navbar = () => {
