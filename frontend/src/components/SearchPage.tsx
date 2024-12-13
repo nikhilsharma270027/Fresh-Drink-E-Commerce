@@ -26,6 +26,7 @@ interface Products {
   name: string;
   imageurl: string;
   price: string;
+  type: string;
 }
 
 const SearchPage = () => {
@@ -70,7 +71,7 @@ const SearchPage = () => {
         products.map((product) => (
           <div
             key={product._id}
-            className="flex bg-[#68f1d7] flex-wrap-reverse md:flex-nowrap border-b-2"
+            className="flex bg-[#68f1d7] flex-wrap-reverse md:flex-nowrap border-b-2 seachpagerepo"
           >
             <div className="md:w-1/2 m-4">
               <div>
@@ -103,15 +104,18 @@ const SearchPage = () => {
               <div className="mt-2">
                 <p className="text-left font-bold">Size guide</p>
               </div>
-              <div className="gap-2 text-left mt-3">
-                <Button className="rounded-full py-2 px-6 ml-2 ">250ml </Button>
-                <Button
-                  className="rounded-full py-2 px-6 ml-2 border-black "
-                  variant={"outline"}
-                >
-                  500ml
-                </Button>
-              </div>
+                
+                    { product.type === "can" &&
+                  <div className="gap-2 text-left mt-3">
+                    <Button className="rounded-full py-2 px-6 ml-2 ">250ml </Button>
+                    <Button
+                      className="rounded-full py-2 px-6 ml-2 border-black "
+                      variant={"outline"}
+                      >
+                      500ml
+                    </Button>
+                  </div>
+              }
               <div className="flex w-[100%] border-2 border-black justify-evenly mb-2 ml-2 mt-3">
                 <button onClick={dec} disabled={count === 1}>
                   -
@@ -191,7 +195,7 @@ const SearchPage = () => {
 
             <div className="md:w-1/2">
               <div className="hidden sm:hidden md:block lg:block">
-                <img src={product.imageurl} alt="" className="rounded-full" />
+                <img src={product.imageurl} alt="" className="lg:h-[700px] lg:w-[700px] md:h-[500px] md:w-[500px] justify-center" />
                 {/* <img src="/orangeslide.png" alt="" className="rounded-full" /> */}
               </div>
               <div className="sm:hidden block relative">

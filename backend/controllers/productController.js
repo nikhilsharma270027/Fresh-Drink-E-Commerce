@@ -9,6 +9,22 @@ export const getAllProducts = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+export const getAllCan = async (req, res) => {
+  try {
+    const products = await Product.find({type: "can"});
+    res.status(200).json(products);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+export const getAllCookie = async (req, res) => {
+  try {
+    const products = await Product.find({type: "cookie"});
+    res.status(200).json(products);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
 
 export const getProductById = async (req, res) => {
   try {

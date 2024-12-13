@@ -1,7 +1,10 @@
 @tailwind base;
   @tailwind components;
   @tailwind utilities;
-
+  
+.seachpagerepo{
+  margin: 10px;
+}
   @layer base {
     :root {
       --background: 0 0% 100%;

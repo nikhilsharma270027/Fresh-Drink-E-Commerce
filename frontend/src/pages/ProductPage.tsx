@@ -3,6 +3,7 @@
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar'
 import Product from '../components/Product'
+import StickyFooter from '../components/Stickfoot';
 import Strap from '../components/Strap';
 
 const ProductPage = () => {
@@ -10,6 +11,7 @@ const ProductPage = () => {
     <div>
         <Navbar />
         <Strap />
+        <StickyFooter />
         <Product />
         <Footer />
     </div>

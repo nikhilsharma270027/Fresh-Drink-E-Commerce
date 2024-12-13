@@ -208,7 +208,7 @@ export function Component() {
   };
 
   return (
-    <div className="grid md:grid-cols-[1fr_300px] gap-8 max-w-6xl mx-auto px-4 md:px-6 py-12">
+    <div className="grid md:grid-cols-[1fr_300px] gap-8 max-w-6xl mx-auto px-4 md:px-6 py-4">
       <div className="grid gap-6">
         <div className="grid gap-4">
           <h1 className="text-2xl font-bold">Shopping Cart</h1>

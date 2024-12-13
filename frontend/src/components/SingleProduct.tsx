@@ -8,19 +8,23 @@ interface Product {
   name: string;
   imageurl: string;
   price: string;
+  type: string;
 }
 
 interface CartItem {
   _id: string;
   name: string;
   imageurl: string;
+  type: string;
   size: string;
   price: string;
   quantity: number;
 }
 
 const SingleProduct: React.FC = () => {
-  const [products, setProducts] = useState<Product[]>([]);
+  const [canProducts, setCanProducts] = useState<Product[]>([]);
+  const [cookieProducts, setCookieProduct] = useState<Product[]>([]);
+  const [activeSection, setActiveSection] = useState<"can" | "cookie">("can");
   const [loading, setLoading] = useState(true);
   const [sizeClicked, setSizeClicked] = useState<{ [key: string]: string }>({});
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
@@ -45,8 +49,10 @@ const SingleProduct: React.FC = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(import.meta.env.VITE_SERVER_DOMAIN + "/api/products");
-      setProducts(response.data);
+      const canResponse = await axios.get(import.meta.env.VITE_SERVER_DOMAIN + "/api/products/can");
+      const cookieResponse = await axios.get(import.meta.env.VITE_SERVER_DOMAIN + "/api/products/cookie");
+      setCanProducts(canResponse.data);
+      setCookieProduct(cookieResponse.data);
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
@@ -80,6 +86,7 @@ const SingleProduct: React.FC = () => {
           _id: product._id,
           name: product.name,
           size: size,
+          type: activeSection ? 'can' : "cookie",
           imageurl: product.imageurl,
           price: product.price,
           quantity: 1,
@@ -105,13 +112,39 @@ const SingleProduct: React.FC = () => {
     }
   };
 
+  const displayedProducts = activeSection === "can" ? canProducts : cookieProducts;
+
   return loading ? (
     <Loader />
   ) : (
     <div className="bg-[#23e299]">
       <h1 className="text-3xl text-black text-left p-4 py-8 font-extrabold">Our Flavors</h1>
+      {/* Section Toggle Buttons */}
+      <div className="flex justify-start p-4">
+  <Button
+    className={`mx-2 px-6 py-2 rounded-lg transition-all duration-300 ${
+      activeSection === "can"
+        ? "bg-gradient-to-r from-blue-500 to-blue-700 text-white shadow-lg"
+        : "bg-gray-100 text-gray-700 hover:bg-gray-200 shadow-md"
+    }`}
+    onClick={() => setActiveSection("can")}
+  >
+    Drinks
+  </Button>
+  <Button
+    className={`mx-2 px-6 py-2 rounded-lg transition-all duration-300 ${
+      activeSection === "cookie"
+        ? "bg-gradient-to-r from-green-500 to-green-700 text-white shadow-lg"
+        : "bg-gray-100 text-gray-700 hover:bg-gray-200 shadow-md"
+    }`}
+    onClick={() => setActiveSection("cookie")}
+  >
+    Cookies
+  </Button>
+</div>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 p-4">
-        {products.map((product) => (
+        {displayedProducts.map((product) => (
           <div className="mb-10 mr-2 cursor-pointer border-4 border-black bg-[#a06fff] p-5 rounded-2xl" key={product._id}>
             <div className="w-full h-64 overflow-hidden">
               <img className="w-full h-full object-cover" src={product.imageurl} alt={product.name} />

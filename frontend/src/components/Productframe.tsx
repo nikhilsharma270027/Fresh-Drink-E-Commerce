@@ -47,7 +47,7 @@ const Productframe = () => {
             className="w-full h-full object-cover"
             alt="Perfect Pineapple"
           />
-          <span className="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-center bg-opacity-50  text-black font-extrabold p-1 text-md sm:text-md md:text-xl lg:text-2xl">
+          <span className="sm:hidden hidden md:block absolute bottom-2 left-1/2 transform -translate-x-1/2 text-center bg-opacity-50  text-black font-extrabold p-1 text-md  md:text-xl lg:text-2xl">
             Perfect
             <br />
             Pineapple
@@ -60,7 +60,7 @@ const Productframe = () => {
             className="w-full h-full object-cover"
             alt="Ginger Drink"
           />
-          <span className="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-center bg-opacity-50 text-black font-extrabold p-1 text-md sm:text-md md:text-xl lg:text-2xl">
+          <span className="sm:hidden hidden md:block absolute bottom-2 left-1/2 transform -translate-x-1/2 text-center bg-opacity-50 text-black font-extrabold p-1 text-md sm:text-md md:text-xl lg:text-2xl">
             Ginger
             <br />
             Drink
@@ -73,7 +73,7 @@ const Productframe = () => {
             className="w-full h-full object-cover"
             alt="Orange Drink"
           />
-          <span className="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-center bg-opacity-50 text-black font-extrabold p-1 text-md sm:text-md md:text-xl lg:text-2xl">
+          <span className="sm:hidden hidden md:block absolute bottom-2 left-1/2 transform -translate-x-1/2 text-center bg-opacity-50 text-black font-extrabold p-1 text-md sm:text-md md:text-xl lg:text-2xl">
             Orange
             <br />
             Drink
@@ -86,7 +86,7 @@ const Productframe = () => {
             className="w-full h-full object-cover"
             alt="Raspberry Drink"
           />
-          <span className="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-center bg-opacity-50 text-black font-extrabold p-1 text-md sm:text-md md:text-xl lg:text-2xl">
+          <span className="sm:hidden hidden md:block absolute bottom-2 left-1/2 transform -translate-x-1/2 text-center bg-opacity-50 text-black font-extrabold p-1 text-md sm:text-md md:text-xl lg:text-2xl">
             Raspberry
             <br />
             Drink

@@ -12,7 +12,7 @@ const Footer = () => {
           <div className="pl-6 text-left py-1 font-bold">Contact Us</div>
         </div>
         <div className="mr-8">
-          <div className="text-2xl font-bold mt-2">About the Store</div>
+          <div className="text-2xl font-bold mt-2 sm:text-base">About the Store</div>
           <div className="text-2xl font-bold mt-2">kombucha with a twist</div>
           <div className="flex justify-center items-center gap-8 mt-6 mb-10">
             {/* github */}

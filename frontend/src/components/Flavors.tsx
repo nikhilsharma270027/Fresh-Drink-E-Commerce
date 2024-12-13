@@ -12,18 +12,32 @@ const Flavors = () => {
   // const [products, setProducts] = useState<Product[]>([]);
   const navigate = useNavigate();
 
-  const { data: products = [] } = useQuery({
-    queryKey: ["products"],
+  // Fetching products of type "can"
+  const { data: canProducts = [] } = useQuery({
+    queryKey: ["canProducts"],
     queryFn: async () => {
       const { data } = await axios.get(
-        import.meta.env.VITE_SERVER_DOMAIN + "/api/products"
+        import.meta.env.VITE_SERVER_DOMAIN + "/api/products/can"
       );
-      // console.log(data);
-      return data; // this should return the actual data, not the whole response object;
+      return data.slice(0, 2); // Return only the first 2 products
     },
-    placeholderData: keepPreviousData,
     staleTime: 20000,
   });
+
+  // Fetching products of type "cookie"
+  const { data: cookieProducts = [] } = useQuery({
+    queryKey: ["cookieProducts"],
+    queryFn: async () => {
+      const { data } = await axios.get(
+        import.meta.env.VITE_SERVER_DOMAIN + "/api/products/cookie"
+      );
+      return data.slice(0, 2); // Return only the first 2 products
+    },
+    staleTime: 20000,
+  });
+
+  // Combine the products
+  const combinedProducts = [...canProducts, ...cookieProducts];
 
   const handleProductClick = (productId: string) => {
     navigate(`/product/${productId}`);
@@ -34,8 +48,8 @@ const Flavors = () => {
       <h1 className="text-3xl text-black text-left p-4 py-8 font-extrabold">
         Our flavors
       </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 p-4">
-        {products.map((product: Product) => (
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 p-4">
+        {combinedProducts.map((product: Product) => (
           <div
             className="mb-10"
             key={product._id}
